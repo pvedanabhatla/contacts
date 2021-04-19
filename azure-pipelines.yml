@@ -14,7 +14,6 @@ trigger:
 
 pool:
   name: Default
-  demands: pkv
 
 steps:
 
