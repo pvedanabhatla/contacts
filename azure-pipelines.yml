@@ -29,7 +29,7 @@ steps:
 
 - task: Docker@2
   inputs:
-    containerRegistry: 'pkvcontainerregistry'
+    containerRegistry: 'Docker-pvedanabhatla'
     repository: 'pvedanabhatla/contacts-backend'
     command: 'buildAndPush'
     Dockerfile: './contacts-backend/Dockerfile'
@@ -39,7 +39,7 @@ steps:
       $(Build.BuildId)
 - task: Docker@2
   inputs:
-    containerRegistry: 'pkvcontainerregistry'
+    containerRegistry: 'Docker-pvedanabhatla'
     repository: 'pvedanabhatla/contacts-frontend'
     command: 'buildAndPush'
     Dockerfile: './contacts-frontend/Dockerfile'
@@ -56,7 +56,7 @@ steps:
     arguments: '-f ./contacts-deployment/k8s'
     secretType: 'dockerRegistry'
     containerRegistryType: 'Container Registry'
-    dockerRegistryEndpoint: 'pkvcontainerregistry'
+    dockerRegistryEndpoint: 'Docker-pvedanabhatla'
     secretName: 'docker-secret'
 - task: Kubernetes@1
   inputs:
@@ -67,7 +67,7 @@ steps:
     arguments: 'image deployment/contact-frontend-deployment contacts-frontend=pvedanabhatla/contacts-frontend:$(Build.BuildId)'
     secretType: 'dockerRegistry'
     containerRegistryType: 'Container Registry'
-    dockerRegistryEndpoint: 'pkvcontainerregistry'
+    dockerRegistryEndpoint: 'Docker-pvedanabhatla'
 - task: Kubernetes@1
   inputs:
     connectionType: 'Kubernetes Service Connection'
@@ -77,4 +77,4 @@ steps:
     arguments: 'image deployment/contact-backend-deployment contacts-api=pvedanabhatla/contacts-backend:$(Build.BuildId)'
     secretType: 'dockerRegistry'
     containerRegistryType: 'Container Registry'
-    dockerRegistryEndpoint: 'pkvcontainerregistry'
+    dockerRegistryEndpoint: 'Docker-pvedanabhatla'
