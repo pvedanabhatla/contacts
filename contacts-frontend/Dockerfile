@@ -5,8 +5,11 @@ RUN apk add --update nodejs npm
 RUN apk add --update npm
 RUN npm install
 COPY . .
-RUN ls -alrt
+RUN echo "################"
 RUN pwd
+RUN ls -alrt
+RUN echo "@@@@@@@@@@@@@@@@"
+RUN ls -lrt $HOME
 RUN npm run build
 
 FROM nginx
