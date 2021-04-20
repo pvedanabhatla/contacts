@@ -1,14 +1,7 @@
 FROM node:alpine as builder
 WORKDIR '/app'
 COPY ./package.json ./
-RUN npm clean cache
-RUN npm install
-COPY . .
-RUN echo "################"
-RUN pwd
-RUN ls -alrt
-RUN echo "@@@@@@@@@@@@@@@@"
-RUN npm run build
+RUN npm install -g @angular/cli
 
 FROM nginx
 EXPOSE 4200
