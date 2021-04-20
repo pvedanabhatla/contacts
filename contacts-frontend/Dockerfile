@@ -1,9 +1,7 @@
 FROM node:alpine as builder
 WORKDIR '/app'
 COPY ./package.json ./
-RUN apk update && apk install -y curl
-RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
-RUN apk update && apk install -y nodejs
+RUN apk add --update nodejs npm
 RUN npm install
 COPY . .
 RUN npm run build
