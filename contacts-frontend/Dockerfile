@@ -10,6 +10,7 @@ RUN pwd
 RUN ls -alrt
 RUN echo "@@@@@@@@@@@@@@@@"
 RUN ls -lrt $HOME
+ENV PATH="./node_modules/.bin:$PATH"
 RUN npm run build
 
 FROM nginx
