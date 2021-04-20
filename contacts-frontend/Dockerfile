@@ -1,10 +1,14 @@
 FROM node:alpine as builder
 WORKDIR '/app'
 COPY ./package.json ./
+RUN ls -l
+RUN pwd
 RUN apk add --update nodejs npm
 RUN apk add --update npm
 RUN npm install -g npm@7.10.0
 COPY . .
+RUN ls -l
+RUN pwd
 RUN npm run build
 
 FROM nginx
