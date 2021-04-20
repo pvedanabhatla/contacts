@@ -3,7 +3,7 @@ WORKDIR '/app'
 COPY ./package.json ./
 RUN apk add --update nodejs npm
 RUN apk add --update npm
-RUN npm install
+RUN npm install -g npm@7.10.0
 COPY . .
 RUN echo "################"
 RUN pwd
