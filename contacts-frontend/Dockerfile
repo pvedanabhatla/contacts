@@ -1,9 +1,8 @@
 FROM node:alpine as builder
 WORKDIR '/app'
 COPY ./package.json ./
-RUN apk add --update nodejs npm
-RUN apk add --update npm
-RUN npm install -g npm@7.10.0
+RUN npm clean cache
+RUN npm install
 COPY . .
 RUN echo "################"
 RUN pwd
