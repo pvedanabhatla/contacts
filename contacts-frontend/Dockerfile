@@ -5,7 +5,8 @@ RUN ls -l
 RUN pwd
 RUN apk add --update nodejs npm
 RUN apk add --update npm
-RUN npm install -g npm@7.10.0
+RUN npm install
+RUN npm install -g @angular/cli@8.3.18
 COPY . .
 RUN ls -l
 RUN pwd
