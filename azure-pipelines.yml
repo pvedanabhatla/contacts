@@ -79,3 +79,13 @@ steps:
     secretType: 'dockerRegistry'
     containerRegistryType: 'Container Registry'
     dockerRegistryEndpoint: 'Docker-pvedanabhatla'
+
+- task: KubernetesManifest@0
+  displayName: Deploy to Kubernetes cluster
+  inputs:
+    action: deploy
+    manifests: |
+      $(Pipeline.Workspace)/manifests/deployment.yml
+      $(Pipeline.Workspace)/manifests/service.yml
+    containers: |
+        pkvcontainerregistry.azurecr.io/contacts:$(tag)
