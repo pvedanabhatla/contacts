@@ -52,7 +52,6 @@ steps:
   inputs:
     connectionType: 'Kubernetes Service Connection'
     kubernetesServiceEndpoint: 'contactsServiceConnection'
-    namespace: 'kube-system'
     command: 'apply'
     arguments: '-f ./contacts-deployment/k8s'
     secretType: 'dockerRegistry'
@@ -63,7 +62,6 @@ steps:
   inputs:
     connectionType: 'Kubernetes Service Connection'
     kubernetesServiceEndpoint: 'contactsServiceConnection'
-    namespace: 'kube-system'
     command: 'set'
     arguments: 'image deployment/contact-frontend-deployment contacts-frontend=pvedanabhatla/contacts-frontend:$(Build.BuildId)'
     secretType: 'dockerRegistry'
@@ -73,7 +71,6 @@ steps:
   inputs:
     connectionType: 'Kubernetes Service Connection'
     kubernetesServiceEndpoint: 'contactsServiceConnection'
-    namespace: 'kube-system'
     command: 'set'
     arguments: 'image deployment/contact-backend-deployment contacts-api=pvedanabhatla/contacts-backend:$(Build.BuildId)'
     secretType: 'dockerRegistry'
@@ -84,7 +81,6 @@ steps:
   displayName: Deploy to Kubernetes cluster
   inputs:
     action: deploy
-    namespace: 'kube-system'
     kubernetesServiceConnection: 'contactsServiceConnection'
     manifests: |
       ./manifests/deployment.yml
