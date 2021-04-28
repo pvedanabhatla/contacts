@@ -30,7 +30,7 @@ steps:
 
 - task: Docker@2
   inputs:
-    containerRegistry: 'Docker-pvedanabhatla'
+    containerRegistry: 'pkvcontainerregistry.azurecr.io'
     repository: 'pvedanabhatla/contacts-backend'
     command: 'buildAndPush'
     Dockerfile: './contacts-backend/Dockerfile'
@@ -40,7 +40,7 @@ steps:
       $(Build.BuildId)
 - task: Docker@2
   inputs:
-    containerRegistry: 'Docker-pvedanabhatla'
+    containerRegistry: 'pkvcontainerregistry.azurecr.io'
     repository: 'pvedanabhatla/contacts-frontend'
     command: 'buildAndPush'
     Dockerfile: './contacts-frontend/Dockerfile'
