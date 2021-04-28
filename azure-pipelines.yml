@@ -86,4 +86,5 @@ steps:
       ./manifests/deployment.yml
       ./manifests/service.yml
     containers: |
-        pkvcontainerregistry.azurecr.io/contacts:$(tag)
+        pkvcontainerregistry.azurecr.io/pvedanabhatla/contacts-backend:$(tag)
+        pkvcontainerregistry.azurecr.io/pvedanabhatla/contacts-frontend:$(tag)
