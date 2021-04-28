@@ -13,7 +13,7 @@ trigger:
 
 
 pool:
-  ubuntupool
+  vmImage: 'ubuntu-latest'
 
 steps:
 
