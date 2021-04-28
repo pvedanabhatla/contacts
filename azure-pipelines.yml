@@ -31,7 +31,7 @@ steps:
 - task: Docker@2
   inputs:
     containerRegistry: 'Docker-pvedanabhatla'
-    repository: 'pvedanabhatla/contacts-backend'
+    repository: 'contacts-backend'
     command: 'buildAndPush'
     Dockerfile: './contacts-backend/Dockerfile'
     buildContext: './contacts-backend'
@@ -41,7 +41,7 @@ steps:
 - task: Docker@2
   inputs:
     containerRegistry: 'Docker-pvedanabhatla'
-    repository: 'pvedanabhatla/contacts-frontend'
+    repository: 'contacts-frontend'
     command: 'buildAndPush'
     Dockerfile: './contacts-frontend/Dockerfile'
     buildContext: './contacts-frontend'
@@ -63,7 +63,7 @@ steps:
     connectionType: 'Kubernetes Service Connection'
     kubernetesServiceEndpoint: 'contactsServiceConnection'
     command: 'set'
-    arguments: 'image deployment/contact-frontend-deployment contacts-frontend=pvedanabhatla/contacts-frontend:$(Build.BuildId)'
+    arguments: 'image deployment/contact-frontend-deployment contacts-frontend=contacts-frontend:$(Build.BuildId)'
     secretType: 'dockerRegistry'
     containerRegistryType: 'Container Registry'
     dockerRegistryEndpoint: 'Docker-pvedanabhatla'
@@ -72,7 +72,7 @@ steps:
     connectionType: 'Kubernetes Service Connection'
     kubernetesServiceEndpoint: 'contactsServiceConnection'
     command: 'set'
-    arguments: 'image deployment/contact-backend-deployment contacts-api=pvedanabhatla/contacts-backend:$(Build.BuildId)'
+    arguments: 'image deployment/contact-backend-deployment contacts-api=contacts-backend:$(Build.BuildId)'
     secretType: 'dockerRegistry'
     containerRegistryType: 'Container Registry'
     dockerRegistryEndpoint: 'Docker-pvedanabhatla'
@@ -86,5 +86,5 @@ steps:
       ./manifests/deployment.yml
       ./manifests/service.yml
     containers: |
-        pkvcontainerregistry.azurecr.io/pvedanabhatla/contacts-backend:$(tag)
-        pkvcontainerregistry.azurecr.io/pvedanabhatla/contacts-frontend:$(tag)
+        pkvcontainerregistry.azurecr.io/contacts-backend:$(tag)
+        pkvcontainerregistry.azurecr.io/contacts-frontend:$(tag)
