@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: contacts 
-          image: pkvcontainerregistry.azurecr.io/contacts-frontend
+          image: pkvcontainerregistry.azurecr.io/contacts
           ports:
           - containerPort: 80
