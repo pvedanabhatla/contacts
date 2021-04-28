@@ -86,7 +86,7 @@ steps:
     action: deploy
     kubernetesServiceConnection: 'contactsServiceConnection'
     manifests: |
-      $(Pipeline.Workspace)/manifests/deployment.yml
-      $(Pipeline.Workspace)/manifests/service.yml
+      ./manifests/deployment.yml
+      ./manifests/service.yml
     containers: |
         pkvcontainerregistry.azurecr.io/contacts:$(tag)
